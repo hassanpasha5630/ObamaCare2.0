@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+
+
+<!-- Hassan Pasha
+Gabe Mui
+Alain La
+Tyanna Moore  -->
+
+
+<!-- Referenced Used Block.g which was allowed to by the professor
+Data was obtained from google
+following all the protocols to avoid an plagraizm, the code was used to rep our data
+All right reserved to the owner that created this code
+All rights reserved to the follwing group if used with this certain Data Set -->
+
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Language" content="en" />
+    <title>Search Ranks of Presidential Candidates</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+</head>
+
+
+<style>
+
+body {
+  font-size: 15px;
+  font-family: 'Abel', sans-serif;
+  margin-top: 10px;
+}
+
+li{
+    margin-left: 0px;
+    }
+
+.x.axis path,.x.axis line {
+    fill: none;
+    stroke: none;
+    }
+
+.y.axis path {
+    fill: none;
+    }
+
+.y.axis line {
+    fill: none;
+    stroke: #eeeeee;
+    shape-rendering: crispEdges;
+    }
+
+.x.axis text, .y.axis text{
+      font-size: 15px;
+      fill:black;
+      stroke-width: 2px;
+    }
+
+.line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.tick line{
+    stroke: #e0e1e1;
+    opacity: 1;
+    }
+
+#title, .explain{
+      text-indent: 15px;
+    }
+
+#credit{
+      color:grey;
+      text-indent: 20px;
+      line-height: 30px;
+    }
+
+ a:hover{
+      cursor:pointer;
+    }
+
+
+</style>
+
+
+<body>
+
+<h1 id="title">ObamaCare 2.0</h1>
+<h5 id="credit">By <a>Hassan Pasha, Gabe Mui , Alain La ,Tyanna Moore</a></h5>
+<p class="explain"> · Click on a Sates's name in dropdown menus to see the data</p>
+<p class="explain"> · Hover over a State's name tag to see the data. </p>
+<p class="explain"> · Click on the Replay Button to replay the race.</p>
+
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" data-target="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          East
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
+         <!--  <li id="democrats"><a data-target="#">All Democrats</a></li>
+          <li role="separator" class="divider"></li> -->
+
+
+          <li class="candidatename"><a data-target="#">Minnesota</a></li>
+          <li class="candidatename"><a data-target="#">Iowa</a></li>
+          <li class="candidatename"><a data-target="#">Missouri</a></li>
+          <li class="candidatename"><a data-target="#">Arkansas</a></li>
+          <li class="candidatename"><a data-target="#">Mississippi</a></li>
+          <li class="candidatename"><a data-target="#">Louisiana</a></li>
+          <li class="candidatename"><a data-target="#">Alabama</a></li>
+          <li class="candidatename"><a data-target="#">Florida</a></li>
+          <li class="candidatename"><a data-target="#">Georgia</a></li>
+          <li class="candidatename"><a data-target="#">Wisconsin</a></li>
+          <li class="candidatename"><a data-target="#">Illinois</a></li>
+          <li class="candidatename"><a data-target="#">Tennessee</a></li>
+          <li class="candidatename"><a data-target="#">Kentucky</a></li>
+          <li class="candidatename"><a data-target="#">Ohio</a></li>
+          <li class="candidatename"><a data-target="#">Indiana</a></li>
+          <li class="candidatename"><a data-target="#">Michigan</a></li>
+          <li class="candidatename"><a data-target="#">North Carolina</a></li>
+           <li class="candidatename"><a data-target="#">South Carolina</a></li>
+          <li class="candidatename"><a data-target="#">Virginia</a></li>
+         <li class="candidatename"><a data-target="#">West Virginia</a></li>
+         <li class="candidatename"><a data-target="#">Maryland</a></li>
+         <li class="candidatename"><a data-target="#">Delaware</a></li>
+         <li class="candidatename"><a data-target="#">New Jersey</a></li>
+         <li class="candidatename"><a data-target="#">Pennsylvania</a></li>
+          <li class="candidatename"><a data-target="#">Connecticut</a></li>
+          <li class="candidatename"><a data-target="#">Rhode Island</a></li>
+          <li class="candidatename"><a data-target="#">New York</a></li>
+          <li class="candidatename"><a data-target="#">Massachusetts</a></li>
+           <li class="candidatename"><a data-target="#">Vermont</a></li>
+          <li class="candidatename"><a data-target="#">New Hampshire</a></li>
+        <li class="candidatename"><a data-target="#">Maine</a></li>
+
+
+        </ul>
+      </li>
+
+      <li role="presentation" class="dropdown">
+        <a id="drop5" data-target="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          West
+          <span class="caret"></span>
+        </a>
+        <ul id="menu2" class="dropdown-menu" aria-labelledby="drop5">
+        <!--   <li id="republicans"><a data-target="#">All Republicans</a></li>
+           <li role="separator" class="divider"></li> -->
+
+
+
+
+          <li class="candidatename"><a data-target="#">Washington</a></li>
+          <li class="candidatename"><a data-target="#">Oregon</a></li>
+          <li class="candidatename"><a data-target="#">California</a></li>
+          <li class="candidatename"><a data-target="#">Nevada</a></li>
+          <li class="candidatename"><a data-target="#">Arizona</a></li>
+          <li class="candidatename"><a data-target="#">New Mexico</a></li>
+          <li class="candidatename"><a data-target="#">Colorado</a></li>
+          <li class="candidatename"><a data-target="#">Utah</a></li>
+          <li class="candidatename"><a data-target="#">Wyoming</a></li>
+          <li class="candidatename"><a data-target="#">Idaho</a></li>
+          <li class="candidatename"><a data-target="#">Montana</a></li>
+          <li class="candidatename"><a data-target="#">North Dakota</a></li>
+          <li class="candidatename"><a data-target="#">South Dakota</a></li>
+          <li class="candidatename"><a data-target="#">Nebraska</a></li>
+          <li class="candidatename"><a data-target="#">Kansas</a></li>
+
+          <li class="candidatename"><a data-target="#">Oklahoma</a></li>
+          <li class="candidatename"><a data-target="#">Texas</a></li>
+           <li class="candidatename"><a data-target="#">Hawaii</a></li>
+          <li class="candidatename"><a data-target="#">Alaska</a></li>
+
+
+
+
+
+        </ul>
+      </li>
+      <li role="presentation" class="active" id="replay"><a data-target="#">Replay </a></li>
+    </ul>
+  </div>
+
+<div id="graphic"></div>
+
+
+
+<script src="http://d3js.org/d3.v3.js"></script>
+
+<script>
+
+function drawGrahpics(){
+
+var margin = {top: 90, right: 120, bottom: 30, left: 50},
+    width = 1900 - margin.left - margin.right,
+    height = 2900 - margin.top - margin.bottom;
+
+var speed = 900;
+
+var x = d3.scale.linear()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .tickSize(0)
+    .ticks(25)
+    .orient("top");
+
+var xtickLabels = ["Uninsured Rate","Uninsured Rate","Percentage Point Decrease in Uninsured Rate","People Gaining Coverage","Total Medicaid and CHIP Enrollment ","Total Medicaid and CHIP Enrollment ","Total Medicaid/CHIP Child Enrollment","Change in Coverage","Eligible for full Medicaid and Benefits","Eligible for partial Medicaid Benefits","Eligible for Either Full or Partial Medicaid","Increase in People with Insurance Coverage","Cholesterol-Level Screening","Mammogram","Papanicolaou Smear","Additional People with a Usual Source of Clinic Care","Additional People Receiving All Needed Care","Number of Additional Physician Visits Each Year","Reduction in Number of People Experiencing Symptoms of Depression","People Reporting Good, Very Good, or Excellent Health","Reduction in Annual Number of Deaths","Net Increase in Federal Spending","Reduction in Uncompensated Care","Medicare Enrollment"];
+
+xAxis.tickFormat(function(d,i){
+    return xtickLabels[i]
+  });
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .tickFormat(function(d) { return d;})
+    .ticks(16)
+    .innerTickSize(- width)
+    .tickPadding(10)
+    .outerTickSize(0)
+    .orient("left");
+
+
+var line = d3.svg.line()
+    .x(function(d) { return x(d.week); })
+    .y(function(d) { return y(d.rank); });
+
+
+var svg = d3.select("#graphic").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .call(responsivefy)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var clip = svg.append("clipPath")
+    .attr("id", "clip")
+    .append("rect")
+    .attr("x","-5")
+    .attr("y","-20")
+    .attr("width", 0)
+    .attr("height", height*1.2);
+
+
+d3.csv("rankdata.csv", function(error, data) {
+
+
+  var color = d3.scale.category20();
+
+
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "week"; }));
+
+  data.forEach(function(d) {
+    d.week = +[d.week];
+  });
+
+
+  var candidates = color.domain().map(function(name) {
+    return {
+      name: name,
+      values: data.map(function(d) {
+        return {name:name, week: d.week, rank: +d[name]};
+      })
+    };
+  });
+
+
+  x.domain(d3.extent(data, function(d) { return d.week; }));
+
+
+  y.domain([
+    d3.min(candidates, function(c) { return d3.min(c.values, function(v) { return v.rank ; }); }),
+    d3.max(candidates, function(c) { return d3.max(c.values, function(v) { return v.rank ; }); })
+  ].reverse());
+
+
+svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform","translate(0,0)")
+      .call(xAxis)
+      .selectAll("text")
+      .style("text-anchor","start")
+      .attr("dx", "2.3em")
+      .attr("dy", "-0.9em")
+      .attr("transform",function(d){
+        return "rotate(-60)"});
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+
+  //timeline
+  svg.append("line")
+        .attr(
+        {
+            "class":"horizontalGrid",
+            "x1" : -2,
+            "x2" : width,
+            "y1" : y(1) - 13,
+            "y2" : y(1) - 13,
+            "fill" : "none",
+            "shape-rendering" : "crispEdges",
+            "stroke" : "#e0e1e1",
+            "stroke-width" : "1px",
+            "stroke-dasharray": ("3, 3")
+        })
+        .attr("id","dotted")
+        .attr("clip-path", function(d) { return "url(#clip)"; });
+
+
+
+
+  //end of timeline
+
+
+
+  var candidates = svg.selectAll(".candidate")
+      .data(candidates)
+    .enter().append("g")
+      .attr("class", "candidate");
+
+
+ function colorFilter(d){
+    if (d.name === "Alabama") {
+          return "#e8112d";
+      } else if (d.name === "Alaska") {
+          return "#b5e8bf";
+      } else if (d.name === "Arizona"){
+        return "#002654";
+      } else if (d.name === "Arkansas"){
+        return "#441e1c";
+      } else if (d.name === "California"){
+        return "#abb6a9";
+      }else if (d.name === "Colorado"){
+        return "#aeb7be";
+      }
+
+      else if (d.name === "Connecticut"){
+        return "#0c3026";
+      }
+      else if (d.name === "Delaware"){
+        return "#894fbf";
+      }
+      else if (d.name === "Florida"){
+        return "#cce226";
+      }
+      else if (d.name === "Georgia"){
+        return "#f2afc1";
+      }
+      else if (d.name === "Hawaii"){
+        return "#f993c4";
+      }
+    else if (d.name === "Idaho"){
+      return "#56aa1c";
+    }
+    else if (d.name === "Illinois"){
+      return "#aa72bf";
+    }
+    else if (d.name === "Indiana"){
+      return "#266659";
+    }
+    else if (d.name === "Iowa"){
+      return "#f0e8c6";
+    }
+    else if (d.name === "Kansas"){
+      return "#d60270";
+    }
+    else if (d.name === "Kentucky"){
+      return "#b5e2bf";
+    }
+    else if (d.name === "Louisiana"){
+      return "#d1bf91";
+    }
+    else if (d.name === "Maine"){
+      return "#dd682e";
+    }
+    else if (d.name === "Maryland"){
+      return "#211307";
+    }
+    else if (d.name === "Massachusetts"){
+      return "#aadd6d";
+    }
+    else if (d.name === "Michigan"){
+      return "#d3a87c";
+    }
+    else if (d.name === "Minnesota"){
+      return "#f5e5d2";
+    }
+    else if (d.name === "Mississippi"){
+      return "#f89827";
+    }
+    else if (d.name === "Missouri"){
+      return "#ff4f00";
+    }
+    else if (d.name === "Montana"){
+      return "#e2d6b5";
+    }
+    else if (d.name === "Nebraska"){
+      return "#60605b";
+    }
+    else if (d.name === "Nevada"){
+      return "#00997c";
+    }
+    else if (d.name === "New Hampshire"){
+      return "#f9bfc1";
+    }
+    else if (d.name === "New Jersey"){
+      return "#f9e814";
+    }
+    else if (d.name === "New Mexico"){
+      return "#51bfe2";
+    }
+    else if (d.name === "New York"){
+      return "#96938e";
+    }
+    else if (d.name === "North Carolina"){
+      return "#1c004f";
+    }
+    else if (d.name === "North Dakota"){
+      return "#f4db60";
+    }
+    else if (d.name === "Ohio"){
+      return "#0038a8";
+    }
+    else if (d.name === "Oklahoma"){
+      return "#441e1c";
+    }
+    else if (d.name === "Oregon"){
+      return "#730037";
+    }
+    else if (d.name === "Pennsylvania"){
+      return "#f7e8aa";
+    }
+    else if (d.name === "Rhode Island"){
+      return "#3044b5";
+    }
+    else if (d.name === "South Carolina"){
+      return "#661e2b";
+    }
+    else if (d.name === "South Dakota"){
+      return "#ab711e";
+    }
+    else if (d.name === "Tennessee"){
+      return "#50437e";
+    }
+    else if (d.name === "Texas"){
+      return "#ff00d2";
+    }
+    else if (d.name === "Utah"){
+      return "#fff088";
+    }
+    else if (d.name === "Vermont"){
+      return "#0800b0";
+    }
+    else if (d.name === "Virginia"){
+      return "#2c1f00";
+    }
+    else if (d.name === "Washington"){
+      return "#bbac64";
+    }
+    else if (d.name === "West Virginia"){
+      return "#9600ff";
+    }
+    else if (d.name === "Wisconsin"){
+      return "#00aeff";
+    }
+    else if (d.name === "Wyoming"){
+      return "#b664bb";
+    }
+	 else {
+          return "#ffffff";}
+    }
+
+  var path = svg.selectAll(".candidate").append("path")
+      .attr("class", "line")
+      .attr("d", function(d) { return line(d.values); })
+      .attr("clip-path", function(d) { return "url(#clip)"; })
+      .style("stroke", colorFilter)
+
+
+var circleStart = candidates.append("circle")
+      .attr("cx", "0")
+      .attr("cy", function(d) { return y(d.values[0].rank); })
+      .style("fill", colorFilter)
+      .attr("r", 2)
+
+
+
+var circleEnd = candidates.append("circle")
+      .attr("cx", function(d) { return x(d.values[0].week); })
+      .attr("cy", function(d) { return y(d.values[0].rank);} )
+      .style("fill", colorFilter)
+      .attr("r", 2);
+
+
+var timemark = candidates.append("path")
+                  .attr("d", d3.svg.symbol().type("triangle-up"))
+                  .style("fill", "grey")
+                  .attr("transform",function(d) { return "translate(" + (x(d.values[0].week) ) + "," + (y(1)-15) + ") rotate(-30)"; })
+
+
+var round = candidates.append("circle")
+      .attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 15) + "," + (y(d.values[0].rank)) + ")"; })
+      .attr("x", 0)
+      .attr("y",0)
+      .attr("r", 10)
+      .on("mouseover", function (d) {
+        candidates.style("opacity",0.1);
+        candidates.filter(function(path) {return path.name === d.name; }).style("opacity",1);
+      })
+      .on("mouseout", function (d) { candidates.style("opacity",1); })
+      .style("fill", colorFilter);
+
+
+  var ranking = candidates.append("text")
+      .attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 15 ) + "," + (y(d.values[0].rank) ) + ")"; })
+      .attr("x", 0)
+      .attr("dy", ".31em")
+      .attr("text-anchor","middle")
+      .on("mouseover", function (d) {
+        candidates.style("opacity",0.1);
+        candidates.filter(function(path) {return path.name === d.name; }).style("opacity",1);
+      })
+      .on("mouseout", function (d) { candidates.style("opacity",1); })
+      .style("cursor","pointer")
+      .style("fill", "#ffffff")
+      .style("font-weight", "bold")
+      .text(function(d) { return d.values[0].rank; });
+
+
+  var label = candidates.append("text")
+      .attr("transform", function(d) { return "translate(" + (x(d.values[0].week) + 20) + "," + (y(d.values[0].rank) ) + ")"; })
+      .attr("x", 8)
+      .attr("dy", ".31em")
+      .attr("id","label")
+      .on("mouseover", function (d) {
+        candidates.style("opacity",0.1);
+        candidates.filter(function(path) {return path.name === d.name; }).style("opacity",1);
+      })
+      .on("mouseout", function (d) { candidates.style("opacity",1); })
+      .style("cursor","pointer")
+      .style("stroke", colorFilter)
+      .text(function(d) { return d.name; });
+
+
+
+
+  var week = 1;
+
+  var transition = d3.transition()
+    .delay(500)
+    .duration(speed)
+    .each("start", function start() {
+
+      label.transition()
+        .duration(speed)
+        .ease('linear')
+      .attr("transform", function(d) { return "translate(" + (x(d.values[week].week) + 20) + "," + (y(d.values[week].rank)) + ")"; })
+      .text(function(d) { return  d.name; });
+
+      ranking.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("transform", function(d) { return "translate(" + (x(d.values[week].week) + 15) + "," + (y(d.values[week].rank) ) + ")"; })
+      .text(function(d,i) { return  d.values[week].rank; });
+
+      round.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("transform", function(d) { return "translate(" + (x(d.values[week].week) + 15) + "," + (y(d.values[week].rank)) + ")"; });
+
+      circleEnd.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("cx", function(d) { return x(d.values[week].week); })
+        .attr("cy", function(d) { return y(d.values[week].rank); });
+
+      clip.transition()
+        .duration(speed)
+        .ease('linear')
+        .attr("width", x(week+1)+5)
+        .attr("height", height*1.2);
+
+      timemark.transition()
+         .duration(speed)
+         .ease('linear')
+         .attr("transform",function(d) { return "translate(" + (x(d.values[week].week) ) + "," + (y(1)-15) + ") rotate(-30)"; })
+
+
+      week+=1;
+
+
+      if (week !== data[0].length){
+
+        transition = transition.transition().each("start", start);}
+      });
+
+
+    $(".candidatename").on("click",function(){
+      var nameOfCandidate = $(this).text();
+        candidates.style("opacity",0.1);
+        candidates.filter(function(path) {
+          return path.name === nameOfCandidate;
+        }).style("opacity",1);
+      });
+
+
+
+
+   });
+
+
+      function responsivefy(svg) {
+
+        var container = d3.select(svg.node().parentNode),
+            width = parseInt(svg.style("width")),
+            height = parseInt(svg.style("height")),
+            aspect = width / height;
+
+        svg.attr("viewBox", "0 0 " + width + " " + height)
+            .attr("perserveAspectRatio", "xMinYMid")
+            .call(resize);
+
+        d3.select(window).on("resize." + container.attr("#graphic"), resize);
+
+        function resize() {
+            var targetWidth = parseInt(container.style("width"));
+            svg.attr("width", targetWidth * 0.8);
+            svg.attr("height", Math.round(targetWidth /aspect * 0.9));
+        }
+    }
+
+}
+
+</script>
+
+</body>
+
+<script>
+
+drawGrahpics()
+
+d3.select("#replay")
+    .on("click", function(){
+      location.reload()
+    })
+
+
+</script>
+
+</html>
